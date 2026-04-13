@@ -1,118 +1,167 @@
-<p id="mensaje"></p>
-
-<script>
-  const usuario = localStorage.getItem("usuario");
-  document.getElementById("mensaje").textContent = 
-    "Bienvenido " + usuario;
-</script>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Data Imperium - Twitch</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Imperium - Twitch Analytics</title>
+    <!-- Google Fonts para un look más "Tech" -->
+    <link href="https://googleapis.com" rel="stylesheet">
     <style>
+        :root {
+            --twitch-purple: #9146FF;
+            --twitch-dark: #0e0e10;
+            --card-bg: #18181b;
+            --text-gray: #adadb8;
+        }
+
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background: #0e0e10;
+            font-family: 'Inter', sans-serif;
+            background: var(--twitch-dark);
             color: white;
+            line-height: 1.6;
         }
 
         header {
-            background: #9146FF;
-            padding: 20px;
+            background: var(--twitch-purple);
+            padding: 2rem;
             text-align: center;
-            font-size: 30px;
+            font-size: 1.8rem;
+            font-weight: 800;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            letter-spacing: -1px;
+        }
+
+        .user-welcome {
+            text-align: center;
+            padding: 20px 0;
+            color: var(--twitch-purple);
             font-weight: bold;
+            min-height: 24px; /* Evita saltos visuales al cargar */
         }
 
         .contenedor {
-            display: flex;
-            justify-content: space-around;
-            padding: 40px;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
         }
 
         .modulo {
-            background: #18181b;
-            width: 300px;
-            padding: 20px;
-            margin: 15px;
-            border-radius: 15px;
-            box-shadow: 0 0 15px rgba(145,70,255,0.4);
-            transition: transform 0.3s;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid transparent;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .modulo:hover {
-            transform: scale(1.05);
+            transform: translateY(-8px);
+            border-color: var(--twitch-purple);
+            box-shadow: 0 10px 30px rgba(145, 70, 255, 0.2);
         }
 
         .modulo h2 {
-            color: #9146FF;
+            color: var(--twitch-purple);
+            margin-top: 0;
+            font-size: 1.4rem;
+        }
+
+        .modulo p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
         }
 
         .boton {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 10px 15px;
-            background: #9146FF;
+            display: block;
+            text-align: center;
+            padding: 12px;
+            background: var(--twitch-purple);
             color: white;
             text-decoration: none;
-            border-radius: 10px;
-            font-weight: bold;
+            border-radius: 6px;
+            font-weight: 700;
+            transition: background 0.2s, transform 0.1s;
+        }
+
+        .boton:hover {
+            background: #772ce8;
+        }
+
+        .boton:active {
+            transform: scale(0.97);
         }
 
         footer {
             text-align: center;
-            padding: 20px;
-            background: #18181b;
-            margin-top: 20px;
+            padding: 40px 20px;
+            color: var(--text-gray);
+            font-size: 0.85rem;
+            border-top: 1px solid #26262c;
+            margin-top: 50px;
         }
     </style>
 </head>
 <body>
 
 <header>
-    🎮 Data Imperium - Predicción de Abandono en Twitch
+    👾 DATA IMPERIUM
 </header>
 
-<div class="contenedor">
+<p id="mensaje" class="user-welcome"></p>
 
-    <!-- Módulo 1 -->
-    <div class="modulo">
-        <h2>📊 Análisis de Streamers</h2>
-        <p>
-            Evalúa métricas como viewers, duración de stream y actividad
-            para detectar riesgo de abandono.
-        </p>
-        <a href="#" class="boton">Analizar</a>
-    </div>
+<main class="contenedor">
 
-    <!-- Módulo 2 -->
-    <div class="modulo">
-        <h2>🤖 Predicción IA</h2>
-        <p>
-            Usa modelos de inteligencia artificial para predecir si un
-            streamer dejará la plataforma.
-        </p>
-        <a href="#" class="boton">Predecir</a>
-    </div>
+    <section class="modulo">
+        <div>
+            <h2>📊 Análisis de Streamers</h2>
+            <p>Monitorea KPIs críticos como la tasa de retención de viewers y la consistencia de horarios.</p>
+        </div>
+        <a href="#analisis" class="boton">Ejecutar Análisis</a>
+    </section>
 
-    <!-- Módulo 3 -->
-    <div class="modulo">
-        <h2>📈 Dashboard</h2>
-        <p>
-            Visualiza estadísticas en tiempo real y tendencias de abandono
-            dentro de Twitch.
-        </p>
-        <a href="#" class="boton">Ver datos</a>
-    </div>
+    <section class="modulo">
+        <div>
+            <h2>🤖 Predicción IA</h2>
+            <p>Algoritmos de Machine Learning entrenados para identificar patrones previos al abandono (Churn).</p>
+        </div>
+        <a href="#ia" class="boton">Calcular Riesgo</a>
+    </section>
 
-</div>
+    <section class="modulo">
+        <div>
+            <h2>📈 Dashboard Global</h2>
+            <p>Panel interactivo con mapas de calor y tendencias de migración de creadores en tiempo real.</p>
+        </div>
+        <a href="#dashboard" class="boton">Abrir Panel</a>
+    </section>
+
+</main>
 
 <footer>
-    © 2026 Data Imperium | Proyecto de análisis en Twitch
+    © 2026 Data Imperium | Advanced Twitch Intelligence System
 </footer>
+
+<script>
+    // Lógica mejorada de bienvenida
+    document.addEventListener("DOMContentLoaded", () => {
+        const usuario = localStorage.getItem("usuario");
+        const display = document.getElementById("mensaje");
+        
+        if (usuario) {
+            display.innerHTML = `Comandante <span style="color:white">${usuario}</span>, los datos están listos.`;
+        } else {
+            display.textContent = "Acceso de invitado - Análisis limitado";
+        }
+    });
+</script>
 
 </body>
 </html>
+
