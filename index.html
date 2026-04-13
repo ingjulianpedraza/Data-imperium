@@ -1,0 +1,118 @@
+<p id="mensaje"></p>
+
+<script>
+  const usuario = localStorage.getItem("usuario");
+  document.getElementById("mensaje").textContent = 
+    "Bienvenido " + usuario;
+</script>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Data Imperium - Twitch</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #0e0e10;
+            color: white;
+        }
+
+        header {
+            background: #9146FF;
+            padding: 20px;
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .contenedor {
+            display: flex;
+            justify-content: space-around;
+            padding: 40px;
+            flex-wrap: wrap;
+        }
+
+        .modulo {
+            background: #18181b;
+            width: 300px;
+            padding: 20px;
+            margin: 15px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(145,70,255,0.4);
+            transition: transform 0.3s;
+        }
+
+        .modulo:hover {
+            transform: scale(1.05);
+        }
+
+        .modulo h2 {
+            color: #9146FF;
+        }
+
+        .boton {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 15px;
+            background: #9146FF;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #18181b;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    🎮 Data Imperium - Predicción de Abandono en Twitch
+</header>
+
+<div class="contenedor">
+
+    <!-- Módulo 1 -->
+    <div class="modulo">
+        <h2>📊 Análisis de Streamers</h2>
+        <p>
+            Evalúa métricas como viewers, duración de stream y actividad
+            para detectar riesgo de abandono.
+        </p>
+        <a href="#" class="boton">Analizar</a>
+    </div>
+
+    <!-- Módulo 2 -->
+    <div class="modulo">
+        <h2>🤖 Predicción IA</h2>
+        <p>
+            Usa modelos de inteligencia artificial para predecir si un
+            streamer dejará la plataforma.
+        </p>
+        <a href="#" class="boton">Predecir</a>
+    </div>
+
+    <!-- Módulo 3 -->
+    <div class="modulo">
+        <h2>📈 Dashboard</h2>
+        <p>
+            Visualiza estadísticas en tiempo real y tendencias de abandono
+            dentro de Twitch.
+        </p>
+        <a href="#" class="boton">Ver datos</a>
+    </div>
+
+</div>
+
+<footer>
+    © 2026 Data Imperium | Proyecto de análisis en Twitch
+</footer>
+
+</body>
+</html>
